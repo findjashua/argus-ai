@@ -1,8 +1,6 @@
 from enum import Enum
 
-from pydantic import BaseModel, Field
-
-from .types import JsonValue
+from pydantic import BaseModel, Field, JsonValue
 
 
 class DefaultTaskStatus(str, Enum):

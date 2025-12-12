@@ -1,9 +1,8 @@
 from typing import Callable
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, JsonValue
 
 from .protocols import Decomposer, Dispatcher, Router, UpdateHandler
-from .types import JsonValue
 
 class Orchestrator(BaseModel):
     """

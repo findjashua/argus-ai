@@ -1,7 +1,8 @@
 from typing import Protocol
 
+from pydantic import JsonValue
+
 from .models import Task
-from .types import JsonValue
 
 class Decomposer(Protocol):
     def plan(self, request: str, context: dict[str, JsonValue]) -> list[Task]:
