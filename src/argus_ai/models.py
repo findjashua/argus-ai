@@ -1,5 +1,8 @@
-from typing import Literal, Any
+from typing import Literal
+
 from pydantic import BaseModel, Field
+
+from .types import JsonValue
 
 class RetryConfig(BaseModel):
     max_attempts: int = 3
@@ -21,10 +24,10 @@ class Task(BaseModel):
     last_error: str | None = None
     
     # Data
-    result: Any = None
-    metadata: dict[str, Any] = Field(default_factory=dict)
+    result: JsonValue | None = None
+    metadata: dict[str, JsonValue] = Field(default_factory=dict)
 
 class ArgusState(BaseModel):
     user_request: str
     tasks: dict[str, Task] = Field(default_factory=dict)
-    artifacts: dict[str, Any] = Field(default_factory=dict)
+    artifacts: dict[str, JsonValue] = Field(default_factory=dict)
