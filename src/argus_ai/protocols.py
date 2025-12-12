@@ -4,12 +4,14 @@ from pydantic import JsonValue
 
 from .models import Task
 
+
 class Decomposer(Protocol):
     def plan(self, request: str, context: dict[str, JsonValue]) -> list[Task]:
         """
         Decomposes a user request into a list of Tasks with dependencies.
         """
         ...
+
 
 class Router(Protocol):
     def route(self, task: Task, context: dict[str, JsonValue], registry: list[str]) -> str:
@@ -18,12 +20,14 @@ class Router(Protocol):
         """
         ...
 
+
 class Dispatcher(Protocol):
     def format_payload(self, task: Task, context: dict[str, JsonValue]) -> JsonValue:
         """
         Formats the input payload required by the specific agent function.
         """
         ...
+
 
 class UpdateHandler(Protocol):
     def handle(self, task: Task, raw_result: JsonValue) -> dict[str, JsonValue]:

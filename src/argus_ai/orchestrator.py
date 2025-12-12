@@ -4,11 +4,13 @@ from pydantic import BaseModel, Field, JsonValue
 
 from .protocols import Decomposer, Dispatcher, Router, UpdateHandler
 
+
 class Orchestrator(BaseModel):
     """
     The Port (Interface).
     Defines the shape of any Orchestrator implementation.
     """
+
     # Strategy Components
     decomposer: Decomposer
     router: Router
@@ -16,7 +18,7 @@ class Orchestrator(BaseModel):
     update_handler: UpdateHandler
 
     registry: dict[str, Callable[..., JsonValue]] = Field(default_factory=dict)
-    
+
     class Config:
         arbitrary_types_allowed: bool = True
 
@@ -25,4 +27,6 @@ class Orchestrator(BaseModel):
 
     def run(self, request: str) -> dict[str, JsonValue]:
         """Execute the orchestration logic."""
-        raise NotImplementedError(f"Subclasses must implement the `run` method to process {request}.")
+        raise NotImplementedError(
+            f"Subclasses must implement the `run` method to process {request}."
+        )

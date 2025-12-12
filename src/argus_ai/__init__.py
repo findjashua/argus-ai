@@ -3,10 +3,10 @@ from .protocols import Decomposer, Router, Dispatcher, UpdateHandler
 
 __all__ = [
     "Task",
-    "RetryConfig", 
+    "RetryConfig",
     "ArgusState",
-    "Decomposer", 
-    "Router", 
-    "Dispatcher", 
-    "UpdateHandler"
+    "Decomposer",
+    "Router",
+    "Dispatcher",
+    "UpdateHandler",
 ]
